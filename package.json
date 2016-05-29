@@ -1,0 +1,27 @@
+{
+  "name": "biblicando",
+  "version": "1.0.0",
+  "description": "Bible study",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/douglascvas/biblicando.git"
+  },
+  "author": "Douglas Vasconcelos <douglascvas@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/douglascvas/biblicando/issues"
+  },
+  "homepage": "https://github.com/douglascvas/biblicando#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "http-proxy-middleware": "^0.15.2"
+  },
+  "scripts": {
+    "serve": "cd backend && gulp watch"
+  }
+}
