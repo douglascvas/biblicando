@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:douglascvas/biblicando-frontend.git
+[submodule "backend"]
+	path = backend
+	url = git@github.com:douglascvas/biblicando-backend.git
