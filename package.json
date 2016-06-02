@@ -4,7 +4,8 @@
   "description": "Bible study",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "echo 'installing...' && cd frontend && npm install && cd .. && cd backend && npm install"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,5 @@
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "http-proxy-middleware": "^0.15.2"
-  },
-  "scripts": {
-    "serve": "cd backend && gulp watch"
   }
 }
