@@ -38,7 +38,7 @@ function registerTasks(prefix, tasks) {
 const taskMap = {
   'build': task('be-build', 'fe-build'),
   'start': task('be-start', 'fe-start'),
-  'dev': task('fe-start', 'fe-serve', 'be-watch')
+  'dev': task('fe-serve', 'be-start', 'be-watch')
 };
 
 gulp.task('default', ['build']);
