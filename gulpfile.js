@@ -35,10 +35,50 @@ function registerTasks(prefix, tasks) {
   }
 }
 
+// =========================================================================================
+
+var net = require('net');
+
+var portInUse = function (port, callback) {
+  var server = net.createServer(function (socket) {
+    socket.write('Echo server\r\n');
+    socket.pipe(socket);
+  });
+
+  server.listen(port, '127.0.0.1');
+  server.on('error', function (e) {
+    callback(true);
+  });
+  server.on('listening', function (e) {
+    server.close();
+    callback(false);
+  });
+};
+
+function waitForApplication(port, callback) {
+  const interval = setInterval(()=> {
+    portInUse(port, used => {
+      console.log("### Port used:", used);
+      if (used) {
+        clearInterval(interval);
+        return callback();
+      }
+    })
+  }, 500);
+}
+
+function proxy(cb) {
+  var server = require('gulp-express');
+  server.run([__dirname + '/index.js'], {}, 35724);
+
+  waitForApplication(3010, cb);
+}
+
 const taskMap = {
   'build': task('be-build', 'fe-build'),
   'start': task('be-start', 'fe-start'),
-  'dev': task('fe-serve', 'be-start', 'be-watch')
+  'proxy': task(proxy),
+  'dev': task('be-dev', 'fe-dev', proxy)
 };
 
 gulp.task('default', ['build']);
