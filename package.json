@@ -25,6 +25,7 @@
     "source-map-support": "^0.4.0"
   },
   "devDependencies": {
+    "gulp": "gulpjs/gulp#4.0",
     "source-map-support": "^0.4.0"
   }
 }

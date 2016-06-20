@@ -1,39 +1,11 @@
+const gulp = require('gulp');
 const feTasks = require('./frontend/gulp-tasks');
 const beTasks = require('./backend/gulp-tasks');
-const gulp = require('gulp');
 
-feTasks(gulp);
-beTasks(gulp);
+// =========================================================================================
 
-function task() {
-  var dependencies = Array.prototype.slice.call(arguments);
-  var handler = null;
-  if (!dependencies.length) {
-    return;
-  }
-  if (typeof dependencies[dependencies.length - 1] === 'function') {
-    handler = dependencies[dependencies.length - 1];
-    dependencies.splice(dependencies.length - 1, 1);
-  }
-  return {
-    dependencies: dependencies,
-    handler: handler
-  };
-}
-
-function registerTasks(prefix, tasks) {
-  const taskNames = Reflect.ownKeys(tasks);
-  for (let taskName of taskNames) {
-    let description = tasks[taskName];
-    let dependencies = description.dependencies.map(dep=> {
-      if (taskNames.indexOf(dep) >= 0) {
-        return prefix + dep;
-      }
-      return dep;
-    });
-    gulp.task(prefix + taskName, dependencies, description.handler);
-  }
-}
+feTasks(gulp, {port: 3010});
+beTasks(gulp, {port: 3010});
 
 // =========================================================================================
 
@@ -58,8 +30,9 @@ var portInUse = function (port, callback) {
 function waitForApplication(port, callback) {
   const interval = setInterval(()=> {
     portInUse(port, used => {
-      console.log("### Port used:", used);
+      console.log("# Starting proxy server...");
       if (used) {
+        console.log("# Proxy server started.");
         clearInterval(interval);
         return callback();
       }
@@ -74,13 +47,8 @@ function proxy(cb) {
   waitForApplication(3010, cb);
 }
 
-const taskMap = {
-  'build': task('be-build', 'fe-build'),
-  'start': task('be-start', 'fe-start'),
-  'proxy': task(proxy),
-  'dev': task('be-dev', 'fe-dev', proxy)
-};
-
-gulp.task('default', ['build']);
-
-registerTasks('', taskMap);
+gulp.task('build', gulp.parallel('be-build', 'fe-build'));
+gulp.task('start', gulp.series('be-start', 'fe-start'));
+gulp.task('proxy', proxy);
+gulp.task('dev', gulp.series('be-start', 'fe-start', 'proxy', gulp.parallel('be-watch', 'fe-watch')));
+gulp.task('default', gulp.parallel('build'));
