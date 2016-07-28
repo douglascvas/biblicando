@@ -51,4 +51,4 @@ gulp.task('build', gulp.parallel('be-build', 'fe-build'));
 gulp.task('start', gulp.series('be-start', 'fe-start'));
 gulp.task('proxy', proxy);
 gulp.task('dev', gulp.series('be-start', 'fe-start', 'proxy', gulp.parallel('be-watch', 'fe-watch')));
-gulp.task('default', gulp.parallel('build'));
+gulp.task('default', gulp.parallel('be-watch', 'proxy', 'fe-dev'));
