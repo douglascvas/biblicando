@@ -1,10 +1,17 @@
 # Biblicando
 
+## Cloning the repo
+
+The project is splitted into git submodules. Therefore, whenever cloning the repo, remember to do it recursively:
+```
+git clone --recursive https://github.com/douglascvas/biblicando.git
+```
+
 ## Preparing the environment
 
 To prepare the environment to run biblicando, you need a mongodb instance and a redis instance.
 To make the process of preparing the environment easier, an ansible script is provided to bootstrap docker images with those dependencies.
-The ansible script also installs jenkins and docker-engine.
+The ansible script also installs jenkins and docker-engine if you do not tell it to do otherwise.
 
 #### How to run
  
