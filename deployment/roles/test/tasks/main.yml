@@ -1,0 +1,10 @@
+- name: Check if docker is installed
+  command: docker -v
+  ignore_errors: yes
+  register: docker_status
+
+- name: Process docker status
+  set_fact:
+    docker_exists: "{{ docker_status.rc == 0 | bool }}"
+
+- debug: msg="docker installed = {{docker_exists}}"

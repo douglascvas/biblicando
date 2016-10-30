@@ -1,0 +1,11 @@
+database_path: /opt/mongodb/data
+db_host: localhost
+db_username:
+db_password:
+redis_host: localhost
+redis_port: 6379
+cache_config_file:
+bibles_org_token:
+
+install_jenkins: 1
+install_docker: 1

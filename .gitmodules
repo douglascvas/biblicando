@@ -4,3 +4,12 @@
 [submodule "backend"]
 	path = backend
 	url = git@github.com:douglascvas/biblicando-backend.git
+[submodule "deployment/roles/docker"]
+	path = deployment/roles/docker
+	url = git@github.com:douglascvas/docker.ubuntu.git
+[submodule "deployment/roles/jenkins"]
+	path = deployment/roles/jenkins
+	url = git@github.com:douglascvas/ansible-role-jenkins.git
+[submodule "deployment/roles/java"]
+	path = deployment/roles/java
+	url = git@github.com:douglascvas/ansible-role-java.git
