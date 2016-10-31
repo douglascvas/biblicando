@@ -3,8 +3,18 @@
   ignore_errors: yes
   register: docker_status
 
+- name: Check if nodejs is installed
+  command: node -v
+  ignore_errors: yes
+  register: nodejs_status
+
 - name: Process docker status
   set_fact:
     docker_exists: "{{ docker_status.rc == 0 | bool }}"
 
+- name: Process nodejs status
+  set_fact:
+    nodejs_exists: "{{ nodejs_status.rc == 0 | bool }}"
+
 - debug: msg="docker installed = {{docker_exists}}"
+- debug: msg="nodejs installed = {{nodejs_exists}}"

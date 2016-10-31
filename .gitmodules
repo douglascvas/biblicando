@@ -13,3 +13,6 @@
 [submodule "deployment/roles/java"]
 	path = deployment/roles/java
 	url = git@github.com:douglascvas/ansible-role-java.git
+[submodule "deployment/roles/nvm"]
+	path = deployment/roles/nvm
+	url = https://github.com/douglascvas/ansible-role-nvm.git
