@@ -7,9 +7,3 @@
 [submodule "deployment"]
 	path = deployment
 	url = git@github.com:douglascvas/biblicando-deployment.git
-[submodule "deployment/roles/docker"]
-	path = deployment/roles/docker
-	url = git@github.com:douglascvas/docker.ubuntu.git
-[submodule "deployment/roles/nvm"]
-	path = deployment/roles/nvm
-	url = https://github.com/douglascvas/ansible-role-nvm.git
