@@ -1,9 +1,9 @@
 [submodule "frontend"]
 	path = frontend
-	url = git@github.com:douglascvas/biblicando-frontend.git
+	url = https://github.com/douglascvas/biblicando-frontend.git
 [submodule "backend"]
 	path = backend
-	url = git@github.com:douglascvas/biblicando-backend.git
+	url = https://github.com/douglascvas/biblicando-backend.git
 [submodule "deployment"]
 	path = deployment
-	url = git@github.com:douglascvas/biblicando-deployment.git
+	url = https://github.com/douglascvas/biblicando-deployment.git
