@@ -1,9 +1,8 @@
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/douglascvas/biblicando-frontend.git
 [submodule "backend"]
 	path = backend
 	url = https://github.com/douglascvas/biblicando-backend.git
-[submodule "deployment"]
-	path = deployment
-	url = https://github.com/douglascvas/biblicando-deployment.git
+	branch = master
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/douglascvas/biblicando-frontend.git
+	branch = master
